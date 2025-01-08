@@ -33,37 +33,37 @@ const Hero = () => {
   };
   useGSAP(()=>{
     if(hasClicked){
-        gsap.set('#next-video',{visibility:'visible'})
-        gsap.to('#next-video',{
-            transformOrigin:'center center',
+        gsap.set("#next-video", { visibility: "visible" });
+        gsap.to("#next-video",{
+            transformOrigin:"center center",
             scale:1,
-            width:'100%',
-            height:'100%',
+            width:"100%",
+            height:"100%",
             duration:1,
-            ease:'power1.inOut',
+            ease:"power1.inOut",
             onStart:()=>nextVideoRef.current.play(),
         })
-        gsap.from('#current-video',{
+        gsap.from("#current-video",{
             transformOrigin:'center center',
             scale:0,
             duration:1.5,
-            ease:'power1.inOut'
+            ease:"power1.inOut"
         })
     }
   },{dependencies:[currentIndex],revertOnUpdate:true})
   useGSAP(()=>{
-    gsap.set ('#video-frame',{
-        clipPath:' polygon(14% 0%, 72% 0, 90% 90%, 0% 100%)',
-        borderRadius:'0 0 40% 10%'
+    gsap.set ("#video-frame",{
+        clipPath:"polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
+        borderRadius:"0% 0% 40% 10%"
     })
-    gsap.from('#video-frame',{
-        clipPath:' polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)',
-         borderRadius:'0 0 0 0',
-         ease:'power1.inOut',
+    gsap.from("#video-frame",{
+        clipPath:"polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+         borderRadius:"0% 0% 0% 0%",
+         ease:"power1.inOut",
          scrollTrigger:{
-            trigger:'#video-frame',
-            start:'center center',
-            end:'bottom bottom',
+            trigger:"#video-frame",
+            start:"center center",
+            end:"bottom center",
             scrub:true
          }
     })
@@ -89,7 +89,7 @@ const Hero = () => {
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
             <div
               onClick={handleMiniVideoClick}
-              className="origin-center rounded-lg scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
             >
               <video
                 loop
@@ -108,7 +108,7 @@ const Hero = () => {
             loop
             muted
             id="next-video"
-            className="absolute=center invisible absolute z-20 size-64 object-cover object-center"
+            className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
           <video
